@@ -7,10 +7,11 @@
       {{ name }}
     </div>
   </div>
+  <button @click="handleClick">stop watching</button>
 </template>
 
 <script>
-import { computed, ref } from 'vue'
+import { computed, ref, watch, watchEffect } from 'vue'
 
 
 
@@ -20,12 +21,25 @@ export default {
     const search = ref('')
     const names = ref(['mario', 'yoshi', 'rahim', 'karim', 'toad'])
 
+    const stopWatch = watch(search, () => {
+      console.log('watch funtion ran')
+    })
+
+    const stopEffect = watchEffect(()=> {
+      console.log('watchEffect function ran', search.value)
+    })
+
     const matchingNames = computed(() => {
       return names.value.filter(name => name.includes(search.value))
     })
+
+    const handleClick = () => {
+      stopWatch()
+      stopEffect()
+    }
     
 
-    return { names, search, matchingNames }
+    return { names, search, matchingNames, handleClick }
   }
 }
 </script>
