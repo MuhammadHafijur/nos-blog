@@ -1,9 +1,15 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <PostList v-if="showPosts" :posts="posts" />
-    <button @click="showPosts = !showPosts">toggle post</button>
-    <button @click="posts.pop()">delete a post</button>
+    <div v-if="error"> {{ error }} </div>
+    <div v-if="posts.length">
+      <PostList :posts="posts" />
+    </div>
+    <div v-else>
+      Loading...
+    </div>
+    
+
   </div>
 </template>
 
@@ -17,15 +23,26 @@ export default {
   name: 'Home',
   components: { PostList },
   setup(){
-    const posts = ref([
-      {title: 'welcome to the blog', body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum expedita quia debitis vitae iste, laudantium illum porro, laboriosam repellendus numquam fugiat odio aliquid non voluptas hic nobis magni est eaque aspernatur quisquam? Ipsam id doloribus voluptatem cumque magnam! Fugiat velit ad corrupti cum, numquam ducimus labore nostrum repudiandae aperiam soluta molestiae nesciunt ab error molestias sed ut dicta perferendis temporibus a! Voluptatem quia possimus tempora doloribus accusantium, saepe ipsum deserunt ratione eveniet. Aperiam, consectetur recusandae vitae impedit repellendus fugiat iusto atque eveniet sunt explicabo reprehenderit laborum provident reiciendis, odio laboriosam hic nam ratione magnam saepe at dolorum nisi voluptates. Odio placeat ratione sapiente totam voluptas nam beatae blanditiis cupiditate, inventore modi! Consectetur culpa esse quo cum, necessitatibus, quod enim unde aliquid odio illum libero corrupti est voluptatibus reprehenderit magni nostrum mollitia obcaecati, fugit ipsa. Cumque sequi quod, cupiditate facilis aperiam veritatis reiciendis modi non provident earum obcaecati, saepe quis tempore doloremque iure magni. Nostrum facere cum, repellendus consequatur doloribus quidem soluta similique magnam ea exercitationem inventore perferendis rem! Repellat sed libero aliquid eveniet maiores similique iusto incidunt qui eum voluptatem, blanditiis hic! Beatae cupiditate ea cumque quaerat nisi alias unde fugiat blanditiis voluptatibus odit modi repellendus deleniti sint, nostrum aut vel, enim quam. Minima aliquid laborum itaque molestias? Necessitatibus eaque ratione corrupti doloribus, impedit provident ullam quaerat non harum porro modi? Illum numquam necessitatibus odit, in culpa officia sit voluptas totam iure hic est voluptatem rerum commodi dolores obcaecati tempora similique saepe, animi incidunt sed! Dolores pariatur doloremque enim voluptates, labore nobis doloribus laboriosam voluptate adipisci sint dolor iure? Corrupti, hic incidunt illum iste laboriosam reprehenderit blanditiis tempora. Quod, ducimus autem iusto eaque quas ipsum, enim nulla maxime porro vel laborum nemo unde blanditiis sint est officia dolor. Voluptate dolorem exercitationem assumenda optio eveniet, labore ullam est quam inventore dolore quos porro nihil nemo eaque explicabo officia nostrum natus asperiores accusantium commodi nisi illo. Voluptates quaerat, illo velit dolorem nemo fugiat enim provident quis doloremque id temporibus perspiciatis quisquam voluptate est modi, dignissimos mollitia repellendus asperiores! Qui nulla autem veritatis eius accusamus eum, saepe ex harum ab non cumque laborum in totam ad suscipit commodi quam praesentium ea, libero repellat quasi officiis maiores voluptate! Qui repellendus recusandae tempora, corrupti vitae quibusdam cupiditate totam reiciendis. Tempora consectetur nesciunt expedita deleniti non quibusdam distinctio repudiandae enim doloribus facere! Perspiciatis impedit ea fugit facere consequatur pariatur saepe aspernatur aliquam officiis deleniti, rerum eaque, minus sint? Ipsum voluptatibus, nobis tempore quos quis quaerat porro labore cupiditate alias consequuntur deleniti odit quia reiciendis nostrum architecto eos nemo molestias rem quae! In, quidem voluptatem obcaecati quisquam praesentium, quibusdam provident voluptas, nemo magni accusantium blanditiis exercitationem. Suscipit voluptatum explicabo dolor libero delectus enim beatae quia facere ab minima magnam ducimus ut animi, error rerum sequi dolorem maiores blanditiis voluptas iste odit earum repudiandae alias incidunt. Modi odit inventore quos ipsam temporibus est nobis quasi reiciendis, iure sint, optio, omnis perspiciatis consectetur culpa rem earum dignissimos? Molestias blanditiis suscipit delectus itaque autem, quam asperiores dolorem, consequuntur tempora at veniam quia, dignissimos facere placeat enim corporis ex nam soluta! Fugit facere magnam rerum ullam repellat perspiciatis, laboriosam consectetur exercitationem recusandae dicta delectus soluta accusamus vitae, alias quisquam fuga excepturi eveniet quidem, molestias incidunt dignissimos nemo? Dolores tempora, debitis vel magni nam ratione itaque possimus temporibus deserunt dignissimos eligendi ex a quod rem nihil sunt quaerat laudantium obcaecati. Necessitatibus dicta eveniet aut quos, quod minima molestiae maiores quia esse debitis rerum quaerat explicabo. Assumenda adipisci non architecto officiis qui consequatur pariatur ea! Reiciendis deleniti vel accusamus, alias dolores dolorum. Ullam excepturi at, et doloremque possimus magni, rerum ea molestias, consequatur atque amet laudantium doloribus repellendus rem aliquid nobis voluptas. Assumenda, dolore delectus? Blanditiis veritatis aperiam tempora, aliquam facere dolores ad sunt? Libero debitis enim consequatur ipsam facilis quis minus aliquid sapiente repellendus maiores quibusdam esse at deleniti dolore eligendi nulla perspiciatis nam quo id, fuga placeat totam, maxime dignissimos. Aliquid quos eligendi, cumque aspernatur consequuntur dignissimos mollitia, nulla fugit sed ipsam at beatae, cum distinctio est. Ullam ipsum quibusdam aspernatur odio vero architecto minima quam iure corporis, accusamus accusantium blanditiis tempora, quasi excepturi nam voluptatibus, et dolorum assumenda error iste laudantium nemo unde beatae eligendi! Ullam illum nam est tempore facilis modi rem dolorum tempora dolorem ratione aliquam minus iure, obcaecati autem quos officiis animi saepe veniam quibusdam qui eos vero itaque. At quos reprehenderit doloremque saepe esse nostrum, et tempore veritatis deleniti tenetur itaque libero ipsa magnam? Autem similique cupiditate suscipit repudiandae deserunt voluptates ducimus amet, minima laborum eum voluptate id sunt eveniet explicabo velit blanditiis delectus', id: 1},
-      {title: 'top 5 css tips', body: 'lorem ipsum', id: 2}
-    ])
+    const posts = ref([])
+    const error = ref(null)
 
-    const showPosts = ref(true)
+    const load = async () => {
+      try {
+        let data = await fetch('http://localhost:3000/posts')
+        if(!data.ok){
+          throw Error('no data available')
+        }
+        posts.value = await data.json()
+      }
+      catch (err) {
+        error.value = err.message
+        console.log(error.value)
+      }
+    }
+    load()
     
 
-    return { posts, showPosts }
+    return { posts, error }
   }
 }
 </script>
